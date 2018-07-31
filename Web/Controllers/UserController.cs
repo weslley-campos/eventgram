@@ -24,11 +24,7 @@ namespace Web.Controllers
         {
             try
             {
-                UserDefault user = new UserDefault();
-                user.Nome = collection["Nome"];
-                user.Email = collection["Email"];
-                user.Senha = collection["Senha"];
-                userManager.Create(user);
+                userManager.Create(GetUserData(collection));
                 return RedirectToAction(nameof(Index));
             } catch
             {
@@ -36,6 +32,30 @@ namespace Web.Controllers
             }
         }
 
+        public UserDefault GetUserData(IFormCollection collection)
+        {
+            UserDefault user = new UserDefault();
+            user.Nome = collection["Nome"];
+            user.Email = collection["Email"];
+            user.Senha = collection["Senha"];
+            return user;
+        }
+
+        public IActionResult Edit(int id) => View(userManager.GetById(id));
+
+        [HttpPost]
+        public IActionResult Edit(int id, IFormCollection collection)
+        {
+            try
+            {
+                userManager.Edit(GetUserData(collection));
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View();
+            }
+        }
         
     }
 }
