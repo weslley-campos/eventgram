@@ -14,6 +14,10 @@ namespace Business.Business
 
         public List<UserDefault> GetAll() => userPersistence.GetAll();
 
+        public UserDefault GetById(int id) => userPersistence.GetById(id);
+
         public void Create(UserDefault user) => userPersistence.Add(user);
+
+        public void Edit(UserDefault user) => userPersistence.Update(user);
     }
 }
