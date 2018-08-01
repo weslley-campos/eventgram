@@ -25,17 +25,15 @@ namespace Persistence.Persistence
             users.Add(user);
         }
 
-        public void Update(UserDefault user)
-        {
-            int idx = users.FindIndex(e => e.Email == user.Email);
-            users[idx] = user;
-        }
+        public int Find(UserDefault user) => users.FindIndex(e => e.Id == user.Id);
 
+        public void Update(UserDefault user) => users[Find(user)] = user;
+        
         public List<UserDefault> GetAll() => users;
 
-        public UserDefault GetById(int? id)
-        {
-            return id.HasValue ? users.Find(user => user.Id == id) : null;
-        }
+        public UserDefault GetBy(int? id) => id.HasValue ? users.Find(user => user.Id == id) : null;
+
+        public void Delete(int id) => users.Remove(GetBy(id));
+        
     }
 }
