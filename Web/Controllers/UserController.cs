@@ -24,7 +24,7 @@ namespace Web.Controllers
         {
             try
             {
-                userManager.Create(GetUserData(collection));
+                userManager.Create(GetUserData(0, collection));
                 return RedirectToAction(nameof(Index));
             } catch
             {
@@ -32,23 +32,24 @@ namespace Web.Controllers
             }
         }
 
-        public UserDefault GetUserData(IFormCollection collection)
+        public UserDefault GetUserData(int id, IFormCollection collection)
         {
             UserDefault user = new UserDefault();
+            user.Id = id;
             user.Nome = collection["Nome"];
             user.Email = collection["Email"];
             user.Senha = collection["Senha"];
             return user;
         }
 
-        public IActionResult Edit(int id) => View(userManager.GetById(id));
+        public IActionResult Edit(int id) => View(userManager.GetBy(id));
 
         [HttpPost]
         public IActionResult Edit(int id, IFormCollection collection)
         {
             try
             {
-                userManager.Edit(GetUserData(collection));
+                userManager.Edit(GetUserData(id, collection));
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -56,6 +57,20 @@ namespace Web.Controllers
                 return View();
             }
         }
+
+        public IActionResult Delete(int id) => View(userManager.GetBy(id));
         
+        [HttpPost]
+        public IActionResult Delete(int id, IFormCollection collection)
+        {
+            try
+            {
+                userManager.Delete(id);
+                return RedirectToAction(nameof(Index));
+            } catch
+            {
+                return View();
+            }
+        }
     }
 }
