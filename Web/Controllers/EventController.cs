@@ -37,11 +37,11 @@ namespace Web.Controllers
         {
             Event myEvent = new Event();
             myEvent.Id = id;
-            myEvent.EventName = collection["Nome"];
-            myEvent.EventDescription = collection["description"];
-            myEvent.EventLocation = collection["location"];
+            myEvent.EventName = collection["eventName"];
+            myEvent.EventDescription = collection["eventDescription"];
+            myEvent.EventLocation = collection["eventLocation"];
             myEvent.EventDate = collection["eventDate"];
-            myEvent.EventModerator = collection["moderator"];
+            myEvent.EventModerator = collection["eventModerator"];
             return myEvent;
         }
 
