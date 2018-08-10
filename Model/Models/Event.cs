@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace Model.Models
@@ -24,11 +25,27 @@ namespace Model.Models
             this.EventModerator = EventModerator;
         }
 
+        [Key]
         public int Id { get => id; set => id = value; }
+
+        [Required(ErrorMessage = "O nome do Evento é obrigatório", AllowEmptyStrings = false)]
+        [Display(Name = "Nome")]
         public string EventName { get => eventName; set => eventName = value; }
+
+        [Display(Name = "Descrição")]
         public string EventDescription { get => eventDescription; set => eventDescription = value; }
+
+        [Required(ErrorMessage = "A localização do Evento é obrigatória", AllowEmptyStrings = false)]
+        [Display(Name = "Localização")]
         public string EventLocation { get => eventLocation; set => eventLocation = value; }
+
+        [Required(ErrorMessage = "A data do Evento é obrigatória", AllowEmptyStrings = false)]
+        [Display(Name = "Data")]
+        [DataType(DataType.Date, ErrorMessage = "Data inválida!")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
         public string EventDate { get => eventDate; set => eventDate = value; }
+
+        [Display(Name = "Moderador")]
         public string EventModerator { get => eventModerator; set => eventModerator = value; }
     }
 }
