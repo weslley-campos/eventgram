@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Persistence", "Persistence\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Model", "Model\Model.csproj", "{2E155EDD-3855-4126-A3EC-9AA65AD9D3A2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "Web\Web.csproj", "{18A6E5F0-5036-40D5-AD3B-86A62D6913DC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Eventgram", "Web\Eventgram.csproj", "{18A6E5F0-5036-40D5-AD3B-86A62D6913DC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
