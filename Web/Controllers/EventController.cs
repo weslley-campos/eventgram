@@ -17,6 +17,8 @@ namespace Web.Controllers
 
         public IActionResult Index() => View(eventManager.GetAll());
 
+        public IActionResult GetAllByUser(int UserId) => View(eventManager.GetAllByUser(UserId));
+
         public IActionResult Create() => View();
 
         [HttpPost]
