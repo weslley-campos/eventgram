@@ -12,13 +12,13 @@ namespace Business.Business
 
         public UserManager() => userPersistence = new UserPersistence();
 
-        public List<UserDefault> GetAll() => userPersistence.GetAll();
+        public List<User> GetAll() => userPersistence.GetAll();
 
-        public UserDefault GetBy(int id) => userPersistence.GetBy(id);
+        public User GetBy(int id) => userPersistence.GetBy(id);
 
-        public void Create(UserDefault user) => userPersistence.Add(user);
+        public void Create(User user) => userPersistence.Add(user);
 
-        public void Edit(UserDefault user) => userPersistence.Update(user);
+        public void Edit(User user) => userPersistence.Update(user);
 
         public void Delete(int id) => userPersistence.Delete(id);
     }
