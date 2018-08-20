@@ -7,33 +7,40 @@ namespace Persistence.Persistence
 {
     public class UserPersistence
     {
-        private static List<UserDefault> users;
+        private static List<User> users;
 
         static UserPersistence()
         {
             if (users == null)
             {
-                users = new List<UserDefault>();
-                new UserPersistence().Add(new UserDefault("Thiago", "thiago@bol.com", "1231"));
-                new UserPersistence().Add(new UserDefault("Weslley", "weslley@bol.com", "131"));
+                users = new List<User>();
+                new UserPersistence().Add(new User("Thiago", "thiago@bol.com", "1231"));
+                new UserPersistence().Add(new User("Weslley", "weslley@bol.com", "131"));
             }
         }
 
-        public void Add(UserDefault user)
+        public int? Validate(string email, string senha)
+        {
+
+            if (users.Find(u => u.Email.Equals(email)) == null) return null;
+            if (users.Find(u => u.Senha == senha) == null) return null;
+            return users.FindIndex(u => u.Email.Equals(email));
+        }
+
+        public void Add(User user)
         {
             user.Id = users.Count + 1;
             users.Add(user);
         }
 
-        public int Find(UserDefault user) => users.FindIndex(e => e.Id == user.Id);
+        public int Find(User user) => users.FindIndex(e => e.Id == user.Id);
 
-        public void Update(UserDefault user) => users[Find(user)] = user;
+        public void Update(User user) => users[Find(user)] = user;
         
-        public List<UserDefault> GetAll() => users;
+        public List<User> GetAll() => users;
 
-        public UserDefault GetBy(int? id) => id.HasValue ? users.Find(user => user.Id == id) : null;
+        public User GetBy(int? id) => id.HasValue ? users.Find(user => user.Id == id) : null;
 
         public void Delete(int id) => users.Remove(GetBy(id));
-        
     }
 }

@@ -20,36 +20,27 @@ namespace Web.Controllers
         public IActionResult Create() => View();
 
         [HttpPost]
-        public IActionResult Create(IFormCollection collection)
+        public IActionResult Create(User user)
         {
             try
             {
-                userManager.Create(GetUserData(0, collection));
-                return RedirectToAction(nameof(Index));
-            } catch
+                userManager.Create(user);
+                return RedirectToAction("Index", "Login");
+            }
+            catch
             {
                 return View();
             }
         }
 
-        public UserDefault GetUserData(int id, IFormCollection collection)
-        {
-            UserDefault user = new UserDefault();
-            user.Id = id;
-            user.Nome = collection["Nome"];
-            user.Email = collection["Email"];
-            user.Senha = collection["Senha"];
-            return user;
-        }
-
         public IActionResult Edit(int id) => View(userManager.GetBy(id));
 
         [HttpPost]
-        public IActionResult Edit(int id, IFormCollection collection)
+        public IActionResult Edit(int id, User user)
         {
             try
             {
-                userManager.Edit(GetUserData(id, collection));
+                userManager.Edit(user);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -61,16 +52,18 @@ namespace Web.Controllers
         public IActionResult Delete(int id) => View(userManager.GetBy(id));
         
         [HttpPost]
-        public IActionResult Delete(int id, IFormCollection collection)
+        public IActionResult Delete(int id, User user)
         {
             try
             {
-                userManager.Delete(id);
+                userManager.Delete(user.Id);
                 return RedirectToAction(nameof(Index));
             } catch
             {
                 return View();
             }
         }
+
+        public ActionResult Login() => RedirectToAction("Index", "Login");
     }
 }
