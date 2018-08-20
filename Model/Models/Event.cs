@@ -17,14 +17,14 @@ namespace Model.Models
 
         public Event() => Id = 0;
 
-        public Event(string EventName, string EventDescription, string EventLocation, string EventDate, string EventModerator, int UserId)
+        public Event(string EventName, string EventDescription, string EventLocation, string EventDate, string EventModerator)
         {
             this.EventName = EventName;
             this.EventDescription = EventDescription;
             this.EventLocation = EventLocation;
             this.EventDate = EventDate;
             this.EventModerator = EventModerator;
-            this.IdUser = IdUser;
+            //this.IdUser = IdUser;
         }
 
         [Key]
@@ -49,6 +49,7 @@ namespace Model.Models
 
         [Display(Name = "Moderador")]
         public string EventModerator { get => eventModerator; set => eventModerator = value; }
+
         public int IdUser { get => idUser; set => idUser = value; }
     }
 }
