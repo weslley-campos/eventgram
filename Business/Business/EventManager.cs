@@ -16,7 +16,9 @@ namespace Business.Business
 
         public Event GetBy(int id) => eventPersistence.GetBy(id);
 
-        public void Create(Event @event) => eventPersistence.Add(@event);
+        public List<Event> GetAllByUser(int? id) => eventPersistence.GetAllByUser(id);
+
+        public void Create(int id, Event @event) => eventPersistence.Add(id, @event);
 
         public void Edit(Event @event) => eventPersistence.Update(@event);
 

@@ -12,6 +12,7 @@ namespace Model.Models
         private string eventDescription;
         private string eventLocation;
         private string eventDate;
+        private int idUser;
         private string eventModerator;
 
         public Event() => Id = 0;
@@ -23,6 +24,7 @@ namespace Model.Models
             this.EventLocation = EventLocation;
             this.EventDate = EventDate;
             this.EventModerator = EventModerator;
+            //this.IdUser = IdUser;
         }
 
         [Key]
@@ -47,5 +49,7 @@ namespace Model.Models
 
         [Display(Name = "Moderador")]
         public string EventModerator { get => eventModerator; set => eventModerator = value; }
+
+        public int IdUser { get => idUser; set => idUser = value; }
     }
 }
