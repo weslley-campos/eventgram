@@ -14,14 +14,15 @@ namespace Persistence.Persistence
             if (events == null)
             {
                 events = new List<Event>();
-                new EventPersistence().Add(new Event("Lorem ipsum", "Lorem ipsum", "Rua D", "20/06/95","Thiago", 3));
-                new EventPersistence().Add(new Event("Lorem ipsum", "Lorem ipsum", "Rua C", "20/06/95","Thiago", 2));
+                new EventPersistence().Add(2, new Event("Lorem ipsum", "Lorem ipsum", "Rua D", "20/06/95","Thiago"));
+                new EventPersistence().Add(3, new Event("Lorem ipsum", "Lorem ipsum", "Rua C", "20/06/95","Thiago"));
             }
         }
 
-        public void Add(Event @event)
+        public void Add(int id, Event @event)
         {
              @event.Id = events.Count + 1;
+             @event.IdUser = id;
              events.Add(@event);
         }
 
@@ -33,7 +34,11 @@ namespace Persistence.Persistence
 
         public Event GetBy(int? id) => id.HasValue ? events.Find(@event => @event.Id == id) : null;
 
-        public List<Event> GetAllByUser(int? id) => events.FindAll(@event => @event.IdUser == id);
+        public List<Event> GetAllByUser(int? id)
+        {
+            Console.WriteLine(id);
+            return events.FindAll(@event => @event.IdUser == id);
+        }
 
         public void Delete(int id) => events.Remove(GetBy(id));
 

@@ -14,8 +14,8 @@ namespace Persistence.Persistence
             if (posts == null)
             {
                 posts = new List<Post>();
-                new PostPersistence().Add(new Post("Lorem ipsum", "Lorem ipsum", "Rua D", "20/06/95", "Thiago"));
-                new PostPersistence().Add(new Post("Lorem ipsum", "Lorem ipsum", "Rua C", "20/06/95", "Thiago"));
+                //new PostPersistence().Add(new Post("Lorem ipsum", "Lorem ipsum", "Rua D", "20/06/95", "Thiago"));
+                //new PostPersistence().Add(new Post("Lorem ipsum", "Lorem ipsum", "Rua C", "20/06/95", "Thiago"));
             }
         }
 

@@ -17,16 +17,16 @@ namespace Web.Controllers
 
         public IActionResult Index() => View(eventManager.GetAll());
 
-        public IActionResult GetAllByUser(int UserId) => View(eventManager.GetAllByUser(UserId));
+        public IActionResult GetAllByUser(int id) => View(eventManager.GetAllByUser(id));
 
         public IActionResult Create() => View();
 
         [HttpPost]
-        public IActionResult Create(Event @event)
+        public IActionResult Create(int id, Event @event)
         {
             try
             {
-                eventManager.Create(@event);
+                eventManager.Create(id, @event);
                 return RedirectToAction(nameof(Index));
             }
             catch
