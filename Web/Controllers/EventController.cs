@@ -20,11 +20,11 @@ namespace Web.Controllers
         public IActionResult Create() => View();
 
         [HttpPost]
-        public IActionResult Create(IFormCollection collection)
+        public IActionResult Create(Event @event)
         {
             try
             {
-                eventManager.Create(GetEventData(0, collection));
+                eventManager.Create(@event);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -33,26 +33,14 @@ namespace Web.Controllers
             }
         }
 
-        public Event GetEventData(int id, IFormCollection collection)
-        {
-            Event myEvent = new Event();
-            myEvent.Id = id;
-            myEvent.EventName = collection["eventName"];
-            myEvent.EventDescription = collection["eventDescription"];
-            myEvent.EventLocation = collection["eventLocation"];
-            myEvent.EventDate = collection["eventDate"];
-            myEvent.EventModerator = collection["eventModerator"];
-            return myEvent;
-        }
-
         public IActionResult Edit(int id) => View(eventManager.GetBy(id));
 
         [HttpPost]
-        public IActionResult Edit(int id, IFormCollection collection)
+        public IActionResult Edit(int id, Event @event)
         {
             try
             {
-                eventManager.Edit(GetEventData(id, collection));
+                eventManager.Edit(@event);
                 return RedirectToAction(nameof(Index));
             }
             catch
