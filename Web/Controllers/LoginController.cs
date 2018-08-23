@@ -24,7 +24,7 @@ namespace Eventgram.Controllers
             string senha = values["Senha"];
             int? userId = loginManager.Validate(email, senha);
 
-            if (userId != null) RedirectToAction("GetAllByUser", "Event", new { id = userId });
+            if (userId != -1) return RedirectToAction("GetAllByUser", "Event", new { id = userId });
 
             return RedirectToAction(nameof(Index));
         }

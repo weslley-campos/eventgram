@@ -14,8 +14,10 @@ namespace Persistence.Persistence
             if (events == null)
             {
                 events = new List<Event>();
-                new EventPersistence().Add(2, new Event("Lorem ipsum", "Lorem ipsum", "Rua D", "20/06/95","Thiago"));
-                new EventPersistence().Add(3, new Event("Lorem ipsum", "Lorem ipsum", "Rua C", "20/06/95","Thiago"));
+                new EventPersistence().Add(0, new Event("Lorem ipsum", "Lorem ipsum", "Rua A", "20/06/95","Thiago"));
+                new EventPersistence().Add(1, new Event("Lorem ipsum", "Lorem ipsum", "Rua B", "20/06/95","Ana"));
+                new EventPersistence().Add(2, new Event("Lorem ipsum", "Lorem ipsum", "Rua D", "20/06/95","Pedro"));
+                new EventPersistence().Add(3, new Event("Lorem ipsum", "Lorem ipsum", "Rua C", "20/06/95","Carlos"));
             }
         }
 
@@ -26,11 +28,8 @@ namespace Persistence.Persistence
              events.Add(@event);
         }
 
-        public int Find(Event @event) => events.FindIndex(e => e.Id == @event.Id);
 
-        public void Update(Event @event) => events[Find(@event)] = @event;
-
-        public List<Event> GetAll() => events;
+        public void Update(Event @event) => events[events.FindIndex(e => e.Id == @event.Id)] = @event;
 
         public Event GetBy(int? id) => id.HasValue ? events.Find(@event => @event.Id == id) : null;
 
@@ -40,7 +39,12 @@ namespace Persistence.Persistence
             return events.FindAll(@event => @event.IdUser == id);
         }
 
-        public void Delete(int id) => events.Remove(GetBy(id));
+        public int Delete(int id)
+        {
+            Event delete = GetBy(id);
+            events.Remove(delete);
+            return delete.IdUser;
+        }
 
     }
 }

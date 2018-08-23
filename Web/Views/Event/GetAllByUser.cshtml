@@ -7,7 +7,8 @@
 <h2>GetAllByUser</h2>
 
 <p>
-    <a asp-action="Create">Create New</a>
+  
+    @Html.ActionLink("Criar novo evento", "Create", "Event", new { id = ViewBag.Id})
 </p>
 <table class="table">
     <thead>
@@ -55,9 +56,9 @@
                 @Html.DisplayFor(modelItem => item.IdUser)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
             </td>
         </tr>
 }

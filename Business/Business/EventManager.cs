@@ -12,8 +12,6 @@ namespace Business.Business
 
         public EventManager() => eventPersistence = new EventPersistence();
 
-        public List<Event> GetAll() => eventPersistence.GetAll();
-
         public Event GetBy(int id) => eventPersistence.GetBy(id);
 
         public List<Event> GetAllByUser(int? id) => eventPersistence.GetAllByUser(id);
@@ -22,6 +20,6 @@ namespace Business.Business
 
         public void Edit(Event @event) => eventPersistence.Update(@event);
 
-        public void Delete(int id) => eventPersistence.Delete(id);
+        public int Delete(int id) => eventPersistence.Delete(id);
     }
 }

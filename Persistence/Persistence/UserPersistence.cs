@@ -15,16 +15,16 @@ namespace Persistence.Persistence
             {
                 users = new List<User>();
                 new UserPersistence().Add(new User("Thiago", "thiago@bol.com", "1231"));
-                new UserPersistence().Add(new User("Weslley", "weslley@bol.com", "131"));
+                new UserPersistence().Add(new User("Ana", "ana@bol.com", "131"));
+                new UserPersistence().Add(new User("Pedro", "weslley@bol.com", "131"));
+                new UserPersistence().Add(new User("Carlos", "gabriel@bol.com", "131"));
             }
         }
 
         public int? Validate(string email, string senha)
-        {
-
-            if (users.Find(u => u.Email.Equals(email)) == null) return null;
-            if (users.Find(u => u.Senha == senha) == null) return null;
-            return users.FindIndex(u => u.Email.Equals(email));
+        { 
+            User user = users.Find(u => u.Email.Equals(email) && u.Senha.Equals(senha));
+            return user == null ? -1 : user.Id ;
         }
 
         public void Add(User user)
