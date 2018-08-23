@@ -15,7 +15,7 @@ namespace Web.Controllers
 
         public EventController() => eventManager = new EventManager();
 
-        public IActionResult GetAllByUser(int id)
+        public IActionResult MyEvents(int id)
         {
             ViewBag.Id = id;
             return View(eventManager.GetAllByUser(id));
@@ -30,7 +30,7 @@ namespace Web.Controllers
             {
                 eventManager.Create(id, @event);
                 Console.WriteLine(id);
-                return RedirectToAction("GetAllByUser", "Event", new { Id = id});
+                return RedirectToAction("MyEvents", "Event", new { Id = id});
             }
             catch
             {
@@ -46,7 +46,7 @@ namespace Web.Controllers
             try
             {
                 eventManager.Edit(@event);
-                return RedirectToAction("GetAllByUser", "Event", new { Id = @event.IdUser });
+                return RedirectToAction("MyEvents", "Event", new { Id = @event.IdUser });
             }
             catch
             {
@@ -62,7 +62,7 @@ namespace Web.Controllers
             try
             {
                 int idUser = eventManager.Delete(id);
-                return  RedirectToAction("GetAllByUser", "Event", new { Id = idUser });
+                return  RedirectToAction("MyEvents", "Event", new { Id = idUser });
             }
             catch
             {
