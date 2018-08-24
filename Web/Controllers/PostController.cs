@@ -38,13 +38,13 @@ namespace Eventgram.Controllers
         // POST: Post/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(int id, Post post)
         {
             try
             {
-                // TODO: Add insert logic here
+                postManager.Create(id, post);
 
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("MyPosts", "Post", new { Id = id });
             }
             catch
             {

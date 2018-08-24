@@ -14,14 +14,18 @@ namespace Persistence.Persistence
             if (posts == null)
             {
                 posts = new List<Post>();
-                new PostPersistence().Add(new Post(1, 3, "Lorem ipsum", 3, 4, 5));
-                new PostPersistence().Add(new Post(1, 3, "Lorem ipsum", 13, 2, 7));
+                new PostPersistence().Add(3, new Post(1, "Lorem ipsum", 3, 4, 5));
+                new PostPersistence().Add(3, new Post(1, "Lorem ipsum", 13, 2, 7));
             }
         }
 
-        public void Add(Post post)
+        public void Add(int id, Post post)
         {
             post.Id = posts.Count + 1;
+            post.EventId = id;
+            post.Comments = 0;
+            post.Shares = 0;
+            post.PostLikes = 0;
             posts.Add(post);
         }
 

@@ -16,7 +16,7 @@ namespace Business.Business
 
         public Post GetBy(int id) => postPersistence.GetBy(id);
 
-        public void Create(Post post) => postPersistence.Add(post);
+        public void Create(int id, Post post) => postPersistence.Add(id, post);
 
         public void Edit(Post post) => postPersistence.Update(post);
 

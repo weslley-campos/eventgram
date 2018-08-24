@@ -16,10 +16,10 @@ namespace Model.Models
 
         public Post() => Id = 0;
 
-        public Post(int id, int eventId, string description, int postLikes, int shares, int comments)
+        public Post(int id, string description, int postLikes, int shares, int comments)
         {
             Id = id;
-            EventId = eventId;
+            //EventId = eventId;
             Description = description;
             PostLikes = postLikes;
             Shares = shares;
