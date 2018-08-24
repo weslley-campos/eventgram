@@ -12,7 +12,7 @@ namespace Business.Business
 
         public PostManager() => postPersistence = new PostPersistence();
 
-        public List<Post> GetAll() => postPersistence.GetAll();
+        public List<Post> GetAllById(int id) => postPersistence.GetAllById(id);
 
         public Post GetBy(int id) => postPersistence.GetBy(id);
 
