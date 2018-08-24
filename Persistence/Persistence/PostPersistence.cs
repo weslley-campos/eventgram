@@ -14,8 +14,8 @@ namespace Persistence.Persistence
             if (posts == null)
             {
                 posts = new List<Post>();
-                //new PostPersistence().Add(new Post("Lorem ipsum", "Lorem ipsum", "Rua D", "20/06/95", "Thiago"));
-                //new PostPersistence().Add(new Post("Lorem ipsum", "Lorem ipsum", "Rua C", "20/06/95", "Thiago"));
+                new PostPersistence().Add(new Post(1, 3, "Lorem ipsum", 3, 4, 5));
+                new PostPersistence().Add(new Post(1, 3, "Lorem ipsum", 13, 2, 7));
             }
         }
 
@@ -30,6 +30,8 @@ namespace Persistence.Persistence
         public void Update(Post post) => posts[Find(post)] = post;
 
         public List<Post> GetAll() => posts;
+
+        public List<Post> GetAllById(int id) => posts.FindAll(post => post.EventId == id);
 
         public Post GetBy(int? id) => id.HasValue ? posts.Find(post => post.Id == id) : null;
 
