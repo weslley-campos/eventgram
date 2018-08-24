@@ -4,16 +4,24 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Business.Business;
+using Model.Models;
 
 namespace Eventgram.Controllers
 {
     public class PostController : Controller
     {
+        PostManager postManager = new PostManager();
+
+
         // GET: Post
         public ActionResult Index()
         {
             return View();
         }
+
+ 
+        public ActionResult MyPosts(int id) => View(postManager.GetAllById(id));
 
         // GET: Post/Details/5
         public ActionResult Details(int id)
