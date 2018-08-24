@@ -57,7 +57,7 @@ namespace Web.Controllers
         public IActionResult Delete(int id) => View(eventManager.GetBy(id));
 
         [HttpPost]
-        public IActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(int id, IFormCollection collection)
         {
             try
             {
@@ -69,6 +69,8 @@ namespace Web.Controllers
                 return View();
             }
         }
+
+        public IActionResult Details(int id) => RedirectToAction("MyPosts", "Post", new { Id = id });
 
     }
 }

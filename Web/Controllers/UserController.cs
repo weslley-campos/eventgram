@@ -20,6 +20,7 @@ namespace Web.Controllers
         public IActionResult Create() => View();
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Create(User user)
         {
             try
@@ -36,6 +37,7 @@ namespace Web.Controllers
         public IActionResult Edit(int id) => View(userManager.GetBy(id));
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Edit(int id, User user)
         {
             try
@@ -52,6 +54,7 @@ namespace Web.Controllers
         public IActionResult Delete(int id) => View(userManager.GetBy(id));
         
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Delete(int id, User user)
         {
             try

@@ -18,6 +18,7 @@ namespace Eventgram.Controllers
             return View();
         }
 
+        [ValidateAntiForgeryToken]
         public ActionResult Validate(IFormCollection values)
         {
             string email = values["Email"];
@@ -29,6 +30,7 @@ namespace Eventgram.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [ValidateAntiForgeryToken]
         public ActionResult Create()
         {
             return RedirectToAction("Create", "User");
